@@ -1,4 +1,4 @@
-const userLang = 'ar';
+const userLang = 'en';
 const Userformat = true;
 
 window.onload = displayClock();
