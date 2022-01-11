@@ -1,0 +1,100 @@
+body {
+	background-size: cover;
+	background-repeat: no-repeat;
+	font-family: poppins;
+}
+
+.cursor-pointer {
+	cursor: pointer;
+}
+
+.qlink {
+	display: grid;
+	align-content: center;
+	justify-content: center;
+	align-items: stretch;
+	justify-items: stretch;
+	grid-template-columns: repeat(6, 86px);
+	width: 55%;
+	margin: 0 auto;
+}
+
+.qlink__link {
+	position: relative;
+	text-decoration: none;
+	display: flex;
+	flex-direction: column;
+	-webkit-box-pack: start;
+	justify-content: flex-start;
+	-webkit-box-align: center;
+	align-items: center;
+	width: 78px;
+	height: 110px;
+	cursor: pointer;
+	gap: 8px;
+}
+
+.qlink__link:hover {
+	text-decoration: none;
+}
+
+.qlink__link img,
+
+.qlink__link #forSVG {
+	display: block;
+	padding: 16px;
+	width: 70px;
+	height: 70px;
+	box-shadow: rgb(0 0 0 / 30%) 0px 1px 4px 0px;
+	border-radius: 8px;
+	object-fit: contain;
+}
+
+.dark-mode .qlink__link img,
+
+.dark-mode .qlink__link #forSVG {
+	background: rgb(30, 32, 41) !important;
+}
+
+.qlink__link p {
+	margin: 0px;
+	font-family: Poppins;
+	font-weight: 400;
+	font-size: 11px;
+	line-height: 17px;
+	max-width: 100%;
+	height: 17px;
+	color: white;
+	padding: 0px 2px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.qlink__link:hover .optionsNav {
+	display: flex;
+}
+
+.optionsNav {
+	display: none;
+	position: absolute;
+	top: -2rem;
+	right: -1rem;
+}
+
+.hidden {
+	display: none !important;
+}
+
+.show {
+	display: block !important;
+	visibility: visible;
+}
+
+.radio input:checked~label {
+	background-color: rgb(229 231 235) !important;
+}
+
+.dark-mode .radio input:checked~label {
+	background-color: rgb(55 65 81) !important;
+}

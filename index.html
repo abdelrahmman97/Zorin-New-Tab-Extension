@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- Meta tags -->
+	<meta charset="utf-8" />
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+	<meta name="viewport" content="width=device-width" />
+
+	<!-- Favicon and title -->
+	<link rel="icon" href="icons/icon-128.png">
+	<title>New Tab</title>
+
+	<!-- Halfmoon CSS -->
+	<link href="halfmoon/css/halfmoon-variables.min.css" rel="stylesheet" />
+
+	<link rel="stylesheet" href="./css/poppins.css">
+	<link rel="stylesheet" href="./css/main.min.css">
+	<link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body class="with-custom-webkit-scrollbars with-custom-css-scrollbars" data-dm-shortcut-enabled="true"
+	data-sidebar-shortcut-enabled="true" data-set-preferred-theme-onload="true">
+	<!-- Modals go here -->
+	<!-- Reference: https://www.gethalfmoon.com/docs/modal -->
+
+	<!-- Page wrapper start -->
+	<div class="page-wrapper with-sidebar" data-sidebar-type="overlayed-all"
+		style="background-color: rgb(0 0 0 / 38%);">
+
+		<!-- Sticky alerts (toasts), empty container -->
+		<!-- Reference: https://www.gethalfmoon.com/docs/sticky-alerts-toasts -->
+		<div class="sticky-alerts"></div>
+
+		<div class="sidebar-overlay"></div>
+
+		<!-- Sidebar start -->
+		<div class="sidebar">
+			<div class="sidebar-menu">
+				<h5 class="sidebar-title">Settings</h5>
+				<div class="sidebar-divider"></div>
+				<div class="p-10 tw-w-full">
+					<form id="themeForm" name="themeForm"
+						class="bg-dark-light-dm bg-gray-100 border-0 card d-flex gap-1 items-center justify-center mx-auto my-5 p-5 tw-w-full">
+						<div class="flex-fill radio">
+							<input name="Theme" type="radio" id="Light" hidden="hidden" value="Light" />
+							<label for="Light"
+								class="cursor-pointer d-flex justify-content-around m-0 p-5 radio rounded">
+								<svg class="tw-w-9 tw-h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+									xmlns="http://www.w3.org/2000/svg">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+										d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z">
+									</path>
+								</svg>
+								<span class="">Light</span>
+							</label>
+						</div>
+						<div class="flex-fill radio">
+							<input name="Theme" type="radio" id="Dark" hidden="hidden" value="Dark" />
+							<label for="Dark"
+								class="cursor-pointer d-flex justify-content-around m-0 p-5 radio rounded">
+								<svg class="tw-w-9 tw-h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+									xmlns="http://www.w3.org/2000/svg">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+										d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z">
+									</path>
+								</svg>
+								<span class="">Dark</span>
+							</label>
+						</div>
+						<!-- <div class="inline-block radio">
+							<input name="answer" type="radio" id="D1" hidden="hidden" value="D" />
+							<label for="D1" class="btn btn-square">
+								<svg class="tw-w-25 tw-h-25" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+									xmlns="http://www.w3.org/2000/svg">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+										d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z">
+									</path>
+								</svg>
+								<span class="">Black</span>
+							</label>
+						</div> -->
+					</form>
+				</div>
+
+				<div class="p-10 tw-w-full">
+					<div class="custom-switch mb-15" id="BackgroundForm">
+						<input type="checkbox" id="showBgImage" name="showBgImage" value="" />
+						<label for="showBgImage">Show Background Image</label>
+					</div>
+					<div class="card custom-file m-0 p-5 tw-w-full hidden" id="bgImageDiv">
+						<input type="file" name="backgroundImage" id="bgImage" accept=".jpg,.png,.gif">
+						<label for="bgImage">Choose a file</label>
+					</div>
+				</div>
+
+				<div class="p-10 tw-w-full">
+					<div class="custom-switch mb-5" id="ClockForm">
+						<input type="checkbox" id="showClock" value="">
+						<label for="showClock">Show Clock</label>
+					</div>
+				</div>
+
+				<div class="p-10 tw-w-full">
+					<div class="custom-switch mb-5" id="GreetingForm">
+						<input type="checkbox" id="showGreeting" value="">
+						<label for="showGreeting">Show Greeting</label>
+					</div>
+					<div class="card d-flex gap-1 m-0 p-5 tw-w-full hidden" id="greetingInputDiv">
+						<input type="text" name="userName" id="userName" class="form-control"
+							placeholder="Enter your name" />
+						<button class="btn btn-primary px-5" id="usernameSaveBtn">Save</button>
+					</div>
+				</div>
+
+				<div class="p-10 tw-w-full">
+					<div class="custom-switch mb-5" id="QuickLinksForm">
+						<input type="checkbox" id="QuickLinks" value="">
+						<label for="QuickLinks">Show Quick Links</label>
+						<div class="d-flex">
+						</div>
+					</div>
+					<form class="card d-flex flex-column gap-3 m-0 p-5 tw-w-full" id="addNewLink_form">
+						<input type="text" name="linkTittle" id="linkTittle" class="form-control" placeholder="Title" />
+						<input type="text" name="linkAddress" id="linkAddress" class="form-control"
+							placeholder="Address" />
+						<button type="submit" class="align-self-center btn btn-primary px-5 w-100"
+							id="addLinkBtn">Add</button>
+					</form>
+				</div>
+
+			</div>
+		</div>
+		<!-- Sidebar end -->
+
+		<!-- Content wrapper start -->
+		<div class="content-wrapper">
+
+			<button id="toggleSidebar"
+				class="bg-gray-200 border-0 cursor-pointer d-flex dark-mode:bg-slate-700 ml-15 mt-15 p-5 position-absolute rounded-circle shadow-none text-dark-lm text-white-dm">
+				<!-- <svg class="tw-w-6 tw-h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+					xmlns="http://www.w3.org/2000/svg">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+				</svg> -->
+				<svg class="tw-w-6 tw-h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+					xmlns="http://www.w3.org/2000/svg">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+						d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z">
+					</path>
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+						d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+				</svg>
+			</button>
+
+			<nav class="container">
+				<div class="d-inline-block h-auto my-20 w-full">
+					<div class="d-flex float-left gap-3" id="greetingDiv">
+						<span class="font-size-24 font-weight-medium" id="greetings"></span>
+						<span class="font-size-24 font-weight-normal text-muted text-muted-dm"
+							id="userNameLabel"></span>
+					</div>
+					<div class="d-flex flex-column float-right" id="time">
+						<div class="clock d-flex font-weight-semi-bold gap-0.5 justify-center text-muted-dm" id="clock"
+							style="font-size: 4rem;line-height: normal;">
+							<div id="hour" class=""></div>
+							<div id="separator" class=""></div>
+							<div id="minutes" class=""></div>
+						</div>
+						<div class="sblock">
+							<div class="d-flex font-size-20 font-weight-normal gap-2.5 justify-center sblock__date text-muted-dm"
+								id="sblock__date" style="line-height: normal;">
+								<div id="dayS"></div>
+								<div id="day"></div>
+								<div id="month"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="align-content-center d-flex justify-center" style="margin: 5rem 0;">
+					<!-- <div class="search input-group position-absolute w-600" style="top: 15rem; margin-left: 10rem;"> -->
+					<div class="search input-group w-600">
+						<input type="search" id="search"
+							class="bg-gray-100 dark-mode:bg-gray-700 form-control form-control-lg w-100"
+							placeholder="Search">
+					</div>
+				</div>
+				<template id="links_template">
+					<a href="" target="" class="bg-transparent border-0 card h-full m-0 p-0 qlink__link w-full">
+						<nav class="optionsNav btn-group" id="optionsNav">
+							<button id="edit_btn"
+								class="align-items-center bg-gray-200 border btn btn-action d-flex dark-mode:bg-gray-900 m-0 p-0 p-5">
+								<svg class="tw-w-6 tw-h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+									xmlns="http://www.w3.org/2000/svg">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+										d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z">
+									</path>
+								</svg>
+							</button>
+							<button id="delete_btn"
+								class="align-items-center bg-gray-200 border btn btn-action d-flex dark-mode:bg-gray-900 m-0 p-0 p-5 text-danger	">
+								<svg class="tw-w-6 tw-h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+									xmlns="http://www.w3.org/2000/svg">
+									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+										d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
+									</path>
+								</svg>
+							</button>
+						</nav>
+						<div id="forSVG"></div>
+						<img src="https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.facebook.com&size=128"
+							class="bg-gray-200 link_img" id="" alt="">
+						<p class="link_title"></p>
+					</a>
+				</template>
+				<div class="flex-wrap gap-4 grid-cols-6 grid-rows-3 p-20 qlink w-700 hidden" id="qlinks">
+					<!-- <a href="" target="" class="bg-transparent border-0 card h-full m-0 p-0 qlink__link w-full">
+						<img src="https://t1.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.facebook.com&size=128"
+							class="bg-gray-200" id="" alt="">
+						<p>Facebook</p>
+					</a> -->
+				</div>
+		</div>
+
+		<!-- <div class="w-full h-full d-flex align-items-center justify-content-center">
+				<div class="content">
+					<div class="mt-20">
+						Toggles:
+						<button class="btn btn-sm" type="button" id="toggle-mode">Dark mode</button>
+						<button class="btn btn-sm" type="button" id="toggle-sidebar">Sidebar</button>
+					</div>
+				</div>
+			</div> -->
+	</div>
+	<!-- Content wrapper end -->
+
+
+	</div>
+	<!-- Page wrapper end -->
+
+	<script src="./js/jquery-3.6.0.min.js"></script>
+	<!-- Halfmoon JS -->
+	<script src="halfmoon/js/halfmoon.min.js"></script>
+	<script src="./js/main.js"></script>
+	<script src="./js/time.js"></script>
+	<script src="./js/manageQuickLinks.js"></script>
+	<!-- <script src="./js/greeting.js"></script> -->
+</body>
+
+</html>
