@@ -123,6 +123,22 @@ function onCreateLink({ data }) {
         qlStorage.delete(data);
         link.remove();
         (link == null || link == "") ? container.appendChild(para) : "";
+        if (localStorage.getItem("Quicklinks") != null) {
+            var arrayFromStroage = JSON.parse(localStorage.getItem("Quicklinks"));
+            var arrayLength = arrayFromStroage.length;
+            if (arrayLength >= 18) {
+                $("#addNewLink_form").addClass("hidden");
+                return false;
+            }
+            else {
+                $("#addNewLink_form").removeClass("hidden");
+            }
+        }
+    });
+
+    container.appendChild(clone);
+
+    if (localStorage.getItem("Quicklinks") != null) {
         var arrayFromStroage = JSON.parse(localStorage.getItem("Quicklinks"));
         var arrayLength = arrayFromStroage.length;
         if (arrayLength >= 18) {
@@ -132,18 +148,6 @@ function onCreateLink({ data }) {
         else {
             $("#addNewLink_form").removeClass("hidden");
         }
-    });
-
-    container.appendChild(clone);
-
-    var arrayFromStroage = JSON.parse(localStorage.getItem("Quicklinks"));
-    var arrayLength = arrayFromStroage.length;
-    if (arrayLength >= 18) {
-        $("#addNewLink_form").addClass("hidden");
-        return false;
-    }
-    else {
-        $("#addNewLink_form").removeClass("hidden");
     }
 }
 
@@ -163,14 +167,16 @@ newLink.forEach((data) => {
 
 createLinkForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    var arrayFromStroage = JSON.parse(localStorage.getItem("Quicklinks"));
-    var arrayLength = arrayFromStroage.length;
-    if (arrayLength >= 18) {
-        $("#addNewLink_form").addClass("hidden");
-        return false;
-    }
-    else {
-        $("#addNewLink_form").removeClass("hidden");
+    if (localStorage.getItem("Quicklinks") != null) {
+        var arrayFromStroage = JSON.parse(localStorage.getItem("Quicklinks"));
+        var arrayLength = arrayFromStroage.length;
+        if (arrayLength >= 18) {
+            $("#addNewLink_form").addClass("hidden");
+            return false;
+        }
+        else {
+            $("#addNewLink_form").removeClass("hidden");
+        }
     }
     const title = createLinkTitle.value;
     const link = createLinkAddress.value;
