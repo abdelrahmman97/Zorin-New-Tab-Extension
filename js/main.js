@@ -406,11 +406,13 @@ function halfmoonOnDOMContentLoaded() {
         document.getElementById("QuickLinks").checked = false;
     }
 
-    var arrayFromStroage = JSON.parse(localStorage.getItem("Quicklinks"));
-    var arrayLength = arrayFromStroage.length;
-    if (arrayLength >= 18) {
-        $("#addNewLink_form").addClass("hidden");
-        return false;
+    if (localStorage.getItem("Quicklinks") != null) {
+        var arrayFromStroage = JSON.parse(localStorage.getItem("Quicklinks"));
+        var arrayLength = arrayFromStroage.length;
+        if (arrayLength >= 18) {
+            $("#addNewLink_form").addClass("hidden");
+            return false;
+        }
     }
 
     // Hiding sidebar on first load on small screens (unless data-attribute provided)
@@ -743,11 +745,13 @@ document.addEventListener("DOMContentLoaded", function () {
             $("#qlinks").addClass('hidden');
             halfmoon.createLocalStorage('showQuickLinks', 'false');
         }
-        var arrayFromStroage = JSON.parse(localStorage.getItem("Quicklinks"));
-        var arrayLength = arrayFromStroage.length;
-        if (arrayLength >= 18) {
-            $("#addNewLink_form").addClass("hidden");
-            return false;
+        if (localStorage.getItem("Quicklinks") != null) {
+            var arrayFromStroage = JSON.parse(localStorage.getItem("Quicklinks"));
+            var arrayLength = arrayFromStroage.length;
+            if (arrayLength >= 18) {
+                $("#addNewLink_form").addClass("hidden");
+                return false;
+            }
         }
     });
 
