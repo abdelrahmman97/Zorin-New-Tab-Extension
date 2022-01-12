@@ -324,24 +324,24 @@ function halfmoonOnDOMContentLoaded() {
     var _body = document.querySelector('body');
     if (halfmoon.readLocalStorage('setBackgroundImageCheckBox') != null) {
         if (halfmoon.readLocalStorage('setBackgroundImageCheckBox') == 'true') {
-            if (halfmoon.readLocalStorage('background') != null && halfmoon.readLocalStorage('background') != 'none') {
+            if (halfmoon.readLocalStorage('background') != null && halfmoon.readLocalStorage('background') != '') {
                 _body.style.backgroundImage = 'url(' + localStorage.getItem('background') + ')';
             }
             else {
-                _body.style.backgroundImage = 'none';
+                _body.style.backgroundImage = 'url("./../default.jpg")';
             }
             $("#bgImageDiv").removeClass('hidden');
             document.getElementById("showBgImage").checked = true;
         }
         else if (halfmoon.readLocalStorage('setBackgroundImageCheckBox') == 'false') {
-            _body.style.backgroundImage = 'none';
+            _body.style.backgroundImage = '';
             $("#bgImageDiv").addClass('hidden');
             document.getElementById("showBgImage").checked = false;
         }
     }
     else {
         halfmoon.createLocalStorage('setBackgroundImageCheckBox', 'false');
-        halfmoon.createLocalStorage('background', 'none');
+        halfmoon.createLocalStorage('background', '');
         $("#bgImageDiv").addClass('hidden');
         document.getElementById("showBgImage").checked = false;
     }
@@ -667,45 +667,27 @@ document.addEventListener("DOMContentLoaded", function () {
             if (halfmoon.readLocalStorage('background') != null) {
                 elbody.style.backgroundImage = 'url(' + halfmoon.readLocalStorage('background') + ')';
             }
+            else {
+                elbody.style.backgroundImage = 'url("./../default.jpg")';
+                halfmoon.createLocalStorage('background', "./../default.jpg");
+            }
 
             // Set mew background image
             $("#bgImage").change(function () {
                 if (this.files && this.files[0]) {
                     var reader = new FileReader();
                     reader.onload = function (e) {
-                        console.log('111111111');
                         halfmoon.createLocalStorage('background', e.target.result);
                         elbody.style.backgroundImage = 'url(' + halfmoon.readLocalStorage('background') + ')';
                     }
-                    console.log('xxxxxxx');
                     reader.readAsDataURL(this.files[0]);
                 }
             });
-            // $("#bgImage").on('change', function (evt) {
-            //     var tgt = evt.target || window.event.srcElement,
-            //         files = tgt.files;
-            //     // FileReader support
-            //     if (FileReader && files && files.length) {
-            //         var fr = new FileReader();
-            //         fr.onload = function () {
-            //             halfmoon.createLocalStorage('background', fr.result);
-            //             console.log('111111111');
-            //         }
-            //         console.log('2222222222');
-            //         fr.readAsDataURL(files[0]);
-            //         console.log('333333333');
-            //         elbody.style.backgroundImage = 'url(' + halfmoon.readLocalStorage('background') + ')';
-            //         console.log('444444444');
-            //     }
-            //     // localStorage.setItem('background', $("#bgImage").get(0).files[1]);
-            //     // elbody.style.backgroundImage = 'url(' + localStorage.getItem('background') + ')';
-            // });
         }
         else {
-            console.log('none');
             $('#bgImageDiv').addClass('hidden');
             halfmoon.createLocalStorage('setBackgroundImageCheckBox', false);
-            elbody.style.backgroundImage = 'none';
+            elbody.style.backgroundImage = '';
         }
     });
 
@@ -794,7 +776,9 @@ function GreetingUser() {
 
     // set user name
     var UserName = localStorage.getItem('UserName');
-
+    if (UserName == null) {
+        UserName = "there"
+    }
 
     // Here you can change your greetings
     var gree1 = 'Go to Sleep! ';
