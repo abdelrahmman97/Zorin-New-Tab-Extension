@@ -328,7 +328,7 @@ function halfmoonOnDOMContentLoaded() {
                 _body.style.backgroundImage = 'url(' + localStorage.getItem('background') + ')';
             }
             else {
-                _body.style.backgroundImage = 'url("./../default.jpg")';
+                _body.style.backgroundImage = 'url("./../images/default.jpg")';
             }
             $("#bgImageDiv").removeClass('hidden');
             document.getElementById("showBgImage").checked = true;
@@ -341,7 +341,7 @@ function halfmoonOnDOMContentLoaded() {
     }
     else {
         halfmoon.createLocalStorage('setBackgroundImageCheckBox', 'false');
-        halfmoon.createLocalStorage('background', '');
+        halfmoon.createLocalStorage('background', './../images/default.jpg');
         $("#bgImageDiv").addClass('hidden');
         document.getElementById("showBgImage").checked = false;
     }
@@ -668,8 +668,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 elbody.style.backgroundImage = 'url(' + halfmoon.readLocalStorage('background') + ')';
             }
             else {
-                elbody.style.backgroundImage = 'url("./../default.jpg")';
-                halfmoon.createLocalStorage('background', "./../default.jpg");
+                elbody.style.backgroundImage = 'url("./../images/default.jpg")';
+                halfmoon.createLocalStorage('background', "./../images/default.jpg");
             }
 
             // Set mew background image
